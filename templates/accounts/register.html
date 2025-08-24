@@ -1,0 +1,16 @@
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Enter username" required><br>
+    <input type="password" name="password" placeholder="Enter password" required><br>
+    <input type="text" name="phone" placeholder="Enter phone"><br>
+    <textarea name="address" placeholder="Enter address"></textarea><br>
+    <button type="submit">Register</button>
+</form>
+
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}

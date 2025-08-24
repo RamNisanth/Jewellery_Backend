@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Owner Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ request.user.username }}</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'insert_item' %}">Insert Images</a></li>
+            <li><a href="{% url 'update_item' %}">Update Items</a></li>
+            <li><a href="{% url 'delete_item' %}">Delete Items</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
