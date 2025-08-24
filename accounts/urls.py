@@ -11,6 +11,4 @@ urlpatterns = [
     path("update/", update_item, name="update_item"),
     path("delete/", delete_item, name="delete_item"),
 
-
-
 ]

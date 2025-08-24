@@ -3,6 +3,8 @@ from django.contrib import messages
 from .models import Owner  # import your custom user model
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from .services import imagebroker
 
 def welcome_view(request):
     return render(request, "welcome.html")
@@ -58,7 +60,19 @@ def dashboard_view(request):
 
 @login_required
 def insert_item(request):
+    if request.method == "POST":
+        # image_file = request.FILES.get("image")
+        image_files = request.FILES.getlist("images")
+
+        if not image_files:
+            return HttpResponse("No image selected!", status=400)
+
+        # Call your service layer
+        result = imagebroker.process_and_insert_batch(image_files)
+        return HttpResponse(f"{len(result)} image(s) uploaded and processed!")
+
     return render(request, "accounts/insert.html")
+
 
 @login_required
 def update_item(request):
