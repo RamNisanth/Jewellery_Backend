@@ -1,5 +1,19 @@
 # Jewellery_Backend
 Backend set up for Jewellery store search
+Jewellery Backend
+
+A Django-based backend for managing a jewellery store, with features like:
+
+User Authentication (Django Auth)
+
+Image Uploads to AWS S3
+
+Image Embedding with SentenceTransformers
+
+Vector Search using Milvus
+
+Concurrent Uploads & Processing with concurrent.futures
+
 
 endpoints:
 # API / Endpoints Documentation
@@ -21,9 +35,3 @@ endpoints:
 | `/insert/`     | POST        | `insert_item`     | Inserts/creates a new item.                         |
 | `/update/`     | POST / PUT  | `update_item`     | Updates an existing item.                            |
 | `/delete/`     | POST / DELETE | `delete_item`   | Deletes an existing item.                            |
-
-**Note:** For better REST-style design, consider using `/items/` endpoints:
-- `POST /items/` → create item  
-- `PUT /items/<id>/` → update item  
-- `DELETE /items/<id>/` → delete item  
-- `GET /items/` → list items
