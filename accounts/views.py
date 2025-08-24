@@ -4,6 +4,9 @@ from .models import Owner  # import your custom user model
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+def welcome_view(request):
+    return render(request, "welcome.html")
+
 
 def register_view(request):
     if request.method == "POST":
