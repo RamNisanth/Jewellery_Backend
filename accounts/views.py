@@ -68,7 +68,7 @@ def insert_item(request):
             return HttpResponse("No image selected!", status=400)
 
         # Call your service layer
-        result = imagebroker.process_and_insert_batch(image_files)
+        result = imagebroker.process_and_insert_batch(image_files, request.user)
         return HttpResponse(f"{len(result)} image(s) uploaded and processed!")
 
     return render(request, "accounts/insert.html")
@@ -81,3 +81,4 @@ def update_item(request):
 @login_required
 def delete_item(request):
     return render(request, "accounts/delete.html")
+    
