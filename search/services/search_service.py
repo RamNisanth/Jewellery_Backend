@@ -5,7 +5,7 @@ from sentence_transformers import SentenceTransformer
 from django.conf import settings
 from jewellery.models import Jewellery
 
-from . import milvis_client
+from . import milvus_client
 
 
 def search_image(image, collection_name=settings.COLLECTION_NAME, top_k=3):
@@ -15,14 +15,14 @@ def search_image(image, collection_name=settings.COLLECTION_NAME, top_k=3):
     try:
         # Convert uploaded image to embedding
         img = Image.open(image).convert("RGB")
-        embedding = milvis_client.model.encode(img)
+        embedding = milvus_client.model.encode(img)
 
         # Ensure collection is loaded
-        collection = milvis_client.get_collection(collection_name)
+        collection = milvus_client.get_collection(collection_name)
         collection.load()
 
         # Perform search in Milvus
-        search_params = {"metric_type": "IP", "params": {"nprobe": 10}}
+        search_params = {"metric_type": "L2", "params": {"nprobe": 10}}
         
         results = collection.search(
             data=[embedding.tolist()],

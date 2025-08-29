@@ -1,17 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owner Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .dashboard-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            width: 400px;
+            text-align: center;
+        }
+
+        .dashboard-container h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 12px 0;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 12px;
+            background: #6c63ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: #574b90;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome, {{ request.user.username }}</h1>
-    <nav>
-        <ul>
-            <li><a href="{% url 'insert_item' %}">Insert Images</a></li>
-            <li><a href="{% url 'update_item' %}">Update Items</a></li>
-            <li><a href="{% url 'delete_item' %}">Delete Items</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>
-        </ul>
-    </nav>
+    <div class="dashboard-container">
+        <h1>Welcome, {{ request.user.username }}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'insert_item' %}">Insert Images</a></li>
+                <li><a href="{% url 'update_item' %}">Update Items</a></li>
+                <li><a href="{% url 'delete_item' %}">Delete Items</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
 </body>
 </html>

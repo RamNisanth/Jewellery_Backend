@@ -1,16 +1,97 @@
-<form method="post">
-    {% csrf_token %}
-    <input type="text" name="username" placeholder="Enter username" required><br>
-    <input type="password" name="password" placeholder="Enter password" required><br>
-    <input type="text" name="phone" placeholder="Enter phone"><br>
-    <textarea name="address" placeholder="Enter address"></textarea><br>
-    <button type="submit">Register</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            width: 350px;
+            text-align: center;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-container input,
+        .form-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+        }
+        .form-container input:focus,
+        .form-container textarea:focus {
+            border-color: #6c63ff;
+            box-shadow: 0 0 6px rgba(108, 99, 255, 0.5);
+        }
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            background: #6c63ff;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+        .form-container button:hover {
+            background: #574fd6;
+        }
+        .messages {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            background: #f0f8ff;
+            list-style: none;
+        }
+        .messages li {
+            color: #333;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
 
-{% if messages %}
-    <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
+<div class="form-container">
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Enter username" required>
+        <input type="password" name="password" placeholder="Enter password" required>
+        <input type="text" name="phone" placeholder="Enter phone">
+        <textarea name="address" placeholder="Enter address"></textarea>
+        <button type="submit">Register</button>
+    </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+
+</body>
+</html>

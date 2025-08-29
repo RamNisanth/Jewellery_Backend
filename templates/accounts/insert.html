@@ -1,17 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Insert Images</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .upload-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            width: 380px;
+            text-align: center;
+        }
+
+        .upload-container h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .upload-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .upload-container input[type="file"] {
+            border: 2px dashed #6c63ff;
+            padding: 15px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+        .upload-container input[type="file"]:hover {
+            border-color: #574b90;
+        }
+
+        .upload-container button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #6c63ff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .upload-container button:hover {
+            background: #574b90;
+        }
+    </style>
 </head>
 <body>
-    <h1>Upload Images</h1>
-
-    <form action="{% url 'insert_item' %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="images">Choose images:</label>
-        <input type="file" name="images" id="images" accept="image/*" multiple required>
-        <br><br>
-        <button type="submit">Upload</button>
-    </form>
+    <div class="upload-container">
+        <h1>Upload Images</h1>
+        <form action="{% url 'insert_item' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="images">Choose images:</label>
+            <input type="file" name="images" id="images" accept="image/*" multiple required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
 </body>
 </html>
